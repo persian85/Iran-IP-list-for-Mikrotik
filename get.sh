@@ -9,7 +9,7 @@ output=$( curl --http2-prior-knowledge -s -X POST -H 'Connection: close' $url )
 rsc_fwv4()
 {
 	echo "#Last update: $last";
-	echo "/ip firewall address-list remove [/ip firewall address-list find list=NoNAT]";
+	echo "/ip firewall address-list remove [/ip firewall address-list find list=IRAN-IP-1]";
 	echo "/ip firewall address-list";
 }
 
@@ -22,14 +22,14 @@ rsc_fwv6()
 
 rsc_respinav4()
 {
-	echo ":do { add address=5.160.0.0/16 list=NoNAT} on-error={}";
-	echo ":do { add address=46.209.0.0/16 list=NoNAT} on-error={}";
-	echo ":do { add address=77.104.64.0/18 list=NoNAT} on-error={}";
+	echo ":do { add address=5.160.0.0/16 list=IRAN-IP-1} on-error={}";
+	echo ":do { add address=46.209.0.0/16 list=IRAN-IP-1} on-error={}";
+	echo ":do { add address=77.104.64.0/18 list=IRAN-IP-1} on-error={}";
 }
 
 rsc_intranetv4()
 {
-	echo ":do { add address=10.0.0.0/8 list=NoNAT} on-error={}";
+	echo ":do { add address=10.0.0.0/8 list=IRAN-IP-1} on-error={}";
 }
 
 # $1: ip list
@@ -63,5 +63,5 @@ fi
 
 if [ "$1" != "v6" ]
 then
-	rsc_address_add "$( echo $output | jq -r $filterv4 )" NoNAT v4
+	rsc_address_add "$( echo $output | jq -r $filterv4 )" IRAN-IP-1 v4
 fi
