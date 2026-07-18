@@ -1,4 +1,4 @@
-#Last update: Fri Jul 17 01:17:36 UTC 2026
+#Last update: Sat Jul 18 01:10:06 UTC 2026
 /ip firewall address-list remove [/ip firewall address-list find list=IRAN-IP]
 /ip firewall address-list
 :do { add address=5.160.0.0/16 list=IRAN-IP} on-error={}
